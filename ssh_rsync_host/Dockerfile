@@ -11,5 +11,5 @@ EXPOSE 22
 #save ssh keys in a volume
 VOLUME /etc/ssh/
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/usr/sbin/sshd", "-D"]
