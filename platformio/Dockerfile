@@ -1,4 +1,4 @@
-    FROM python:2.7
+    FROM python:2-stretch
     MAINTAINER Martin Müllenhaupt <mm@netlair.de>
 
     RUN pip install platformio==3.4.1 \
