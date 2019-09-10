@@ -4,7 +4,7 @@ MAINTAINER Martin Müllenhaupt <mm@netlair.de>
 
 RUN pacman -Syy && pacman -S archlinux-keyring --noconfirm
 
-RUN pacman -S python glibc openssl python-pip --noconfirm --force
+RUN pacman -S python glibc openssl python-pip gcc --noconfirm --force
 
 RUN pip install platformio==4.0.3 \
     && platformio platform install atmelavr --with-package framework-arduinoavr \ 
@@ -15,8 +15,11 @@ RUN pip install platformio==4.0.3 \
     
 RUN mkdir -p /init/src 
 
-COPY main.cpp /init/src/main.cpp
 
-RUN platformio init -d /init --board teensy36 \
-    && platformio run -d /init \
+# test teensy build
+COPY main.cpp /init/src/main.cpp
+COPY main-native.cpp /init/src/main-native.cpp
+COPY platformio.ini /init/platformio.ini
+RUN platformio run -d /init \
     && rm -r /init
+
