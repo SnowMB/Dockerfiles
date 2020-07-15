@@ -1,7 +1,7 @@
-FROM python:3.7
-MAINTAINER Martin Müllenhaupt <mm@netlair.de>
+FROM python:3.8
+MAINTAINER Marc Brückner <marc@ma-br.de>
 
-RUN pip install platformio==4.0.3 \
+RUN pip install platformio==4.3.4 \
     && platformio platform install atmelavr --with-package framework-arduinoavr \ 
     && platformio platform update atmelavr \
     && platformio platform install teensy --with-package framework-arduinoteensy --with-package toolchain-gccarmnoneeabi \

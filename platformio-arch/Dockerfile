@@ -1,13 +1,13 @@
-FROM archlinux/base
+FROM archlinux
 
-MAINTAINER Martin Müllenhaupt <mm@netlair.de>
+MAINTAINER Marc Brückner <marc@ma-br.de>
 
-RUN pacman -Syy && pacman -S archlinux-keyring --noconfirm
+RUN pacman -Syu --noconfirm
 
-RUN pacman -S python glibc openssl python-pip gcc --noconfirm --force
+RUN pacman -S python glibc openssl python-pip gcc --noconfirm
 
-RUN pip install platformio==4.0.3 \
-    && platformio platform install atmelavr --with-package framework-arduinoavr \ 
+RUN pip install platformio==4.3.4 \
+    && platformio platform install atmelavr --with-package framework-arduino-avr \ 
     && platformio platform update atmelavr \
     && platformio platform install teensy --with-package framework-arduinoteensy --with-package toolchain-gccarmnoneeabi \
     && platformio platform update teensy \
